@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ກົດລະບຽບພາຍໃນບໍລິສັດ 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FFF8F0;
+    --card-1: #FF6B35;
+    --card-2: #4ECDC4;
+    --card-3: #7B68EE;
+    --card-4: #FF85A1;
+    --card-5: #45B7D1;
+    --card-6: #96CEB4;
+    --card-7: #FFEAA7;
+    --card-8: #DDA0DD;
+    --text-dark: #2D3436;
+    --text-light: #636E72;
+    --white: #FFFFFF;
+    --shadow: 0 8px 32px rgba(0,0,0,0.08);
+    --shadow-hover: 0 16px 48px rgba(0,0,0,0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans Lao', sans-serif;
+    background: var(--bg);
+    color: var(--text-dark);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    padding: 60px 24px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    animation: drift 20s linear infinite;
+  }
+
+  @keyframes drift {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(30px, 30px); }
+  }
+
+  .hero-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 8px 24px;
+    border-radius: 50px;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+
+  .hero h1 {
+    color: white;
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 900;
+    line-height: 1.3;
+    margin-bottom: 16px;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.15);
+  }
+
+  .hero p {
+    color: rgba(255,255,255,0.9);
+    font-size: 16px;
+    line-height: 1.8;
+    max-width: 550px;
+    margin: 0 auto 28px;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .stat-item {
+    text-align: center;
+    color: white;
+  }
+
+  .stat-num {
+    font-size: 32px;
+    font-weight: 900;
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* ===== PROGRESS ===== */
+  .progress-wrap {
+    max-width: 900px;
+    margin: -30px auto 0;
+    padding: 0 24px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .progress-bar-outer {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 20px 28px;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .progress-icon { font-size: 28px; }
+
+  .progress-info { flex: 1; }
+
+  .progress-text {
+    font-size: 13px;
+    color: var(--text-light);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  .progress-track {
+    width: 100%;
+    height: 10px;
+    background: #EEE;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #667eea, #f093fb);
+    border-radius: 10px;
+    transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .progress-count {
+    font-size: 20px;
+    font-weight: 800;
+    color: #764ba2;
+    white-space: nowrap;
+  }
+
+  /* ===== GRID ===== */
+  .container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 24px 80px;
+  }
+
+  .section-title {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  /* ===== CARD ===== */
+  .card {
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+  }
+
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .card-header {
+    padding: 28px 24px 20px;
+    position: relative;
+  }
+
+  .card-icon-wrap {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin-bottom: 16px;
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover .card-icon-wrap {
+    transform: scale(1.1) rotate(-5deg);
+  }
+
+  .card-title {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 6px;
+  }
+
+  .card-subtitle {
+    font-size: 12px;
+    color: var(--text-light);
+    font-weight: 500;
+  }
+
+  .card-arrow {
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+
+  .card:hover .card-arrow {
+    background: #667eea;
+    color: white;
+  }
+
+  .card-status {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid #DDD;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    transition: all 0.3s ease;
+    background: white;
+  }
+
+  .card-status.read {
+    border-color: #4ECDC4;
+    background: #4ECDC4;
+    color: white;
+  }
+
+  /* ===== MODAL ===== */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .modal-overlay.active { display: flex; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .modal {
+    background: var(--white);
+    border-radius: 24px;
+    width: 100%;
+    max-width: 680px;
+    max-height: 85vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.2);
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(40px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .modal-header {
+    padding: 32px 32px 24px;
+    position: relative;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .modal-header-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+
+  .modal-header h2 {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.4;
+    padding-right: 40px;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: #f0f0f0;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+
+  .modal-close:hover { background: #e0e0e0; transform: rotate(90deg); }
+
+  .modal-body {
+    padding: 24px 32px 32px;
+    overflow-y: auto;
+    flex: 1;
+  }
+
+  .rule-item {
+    display: flex;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid #f5f5f5;
+    animation: ruleSlide 0.4s ease both;
+  }
+
+  .rule-item:last-child { border-bottom: none; }
+
+  @keyframes ruleSlide {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .rule-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 800;
+    flex-shrink: 0;
+    color: white;
+  }
+
+  .rule-text {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #444;
+    flex: 1;
+  }
+
+  .rule-text strong { color: var(--text-dark); }
+
+  .warning-box {
+    background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-top: 20px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .warning-box .icon { font-size: 22px; flex-shrink: 0; }
+
+  .warning-box .text {
+    font-size: 13px;
+    line-height: 1.8;
+    color: #e65100;
+    font-weight: 500;
+  }
+
+  .penalty-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 16px;
+    border-radius: 12px;
+    overflow: hidden;
+    font-size: 13px;
+  }
+
+  .penalty-table th {
+    padding: 12px 16px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 12px;
+  }
+
+  .penalty-table td {
+    padding: 10px 16px;
+    text-align: center;
+    border-top: 1px solid #f0f0f0;
+    font-size: 13px;
+  }
+
+  .penalty-table tr:last-child td {
+    font-weight: 700;
+  }
+
+  .modal-footer {
+    padding: 16px 32px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #f0f0f0;
+  }
+
+  .btn-read {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Noto Sans Lao', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+  }
+
+  .btn-read:hover { transform: scale(1.05); }
+
+  .btn-nav {
+    padding: 10px 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    background: white;
+    font-family: 'Noto Sans Lao', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #666;
+  }
+
+  .btn-nav:hover { border-color: #667eea; color: #667eea; }
+
+  .nav-buttons { display: flex; gap: 8px; }
+
+  /* ===== COMPLETION ===== */
+  .completion-banner {
+    max-width: 900px;
+    margin: 0 auto 40px;
+    padding: 0 24px;
+    display: none;
+  }
+
+  .completion-banner.show { display: block; }
+
+  .completion-inner {
+    background: linear-gradient(135deg, #4ECDC4, #44bd63);
+    border-radius: 20px;
+    padding: 32px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 8px 32px rgba(78, 205, 196, 0.3);
+  }
+
+  .completion-inner .big-icon { font-size: 48px; margin-bottom: 12px; }
+  .completion-inner h3 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+  .completion-inner p { font-size: 14px; opacity: 0.9; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 600px) {
+    .hero { padding: 40px 20px 60px; }
+    .hero h1 { font-size: 24px; }
+    .hero-stats { gap: 20px; }
+    .stat-num { font-size: 24px; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .modal { max-height: 90vh; border-radius: 20px 20px 0 0; }
+    .modal-body { padding: 20px; }
+    .modal-header { padding: 24px 20px 20px; }
+    .modal-footer { flex-direction: column; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">📋 ORIENTATION 2025</div>
+    <h1>ກົດລະບຽບພາຍໃນບໍລິສັດ</h1>
+    <p>ຍິນດີຕ້ອນຮັບເຂົ້າສູ່ບໍລິສັດ! ກະລຸນາອ່ານກົດລະບຽບແຕ່ລະຫົວຂໍ້ເພື່ອຄວາມເຂົ້າໃຈ ແລະ ປະຕິບັດວຽກຮ່ວມກັນໄດ້ດີ</p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num">8</span>
+        <span class="stat-label">ຫົວຂໍ້ທັງໝົດ</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">~15</span>
+        <span class="stat-label">ນາທີອ່ານ</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num" id="readCountStat">0</span>
+        <span class="stat-label">ອ່ານແລ້ວ</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRESS -->
+<div class="progress-wrap">
+  <div class="progress-bar-outer">
+    <span class="progress-icon">📖</span>
+    <div class="progress-info">
+      <div class="progress-text" id="progressText">ເລີ່ມອ່ານກົດລະບຽບ — ກົດເລືອກຫົວຂໍ້ຂ້າງລຸ່ມ</div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    </div>
+    <span class="progress-count" id="progressCount">0/8</span>
+  </div>
+</div>
+
+<!-- COMPLETION -->
+<div class="completion-banner" id="completionBanner">
+  <div class="completion-inner">
+    <div class="big-icon">🎉</div>
+    <h3>ອ່ານຄົບທຸກຫົວຂໍ້ແລ້ວ!</h3>
+    <p>ຂອບໃຈທີ່ເອົາໃຈໃສ່ກົດລະບຽບບໍລິສັດ — ຮ່ວມມືກັນສ້າງບ່ອນເຮັດວຽກທີ່ດີ!</p>
+  </div>
+</div>
+
+<!-- CARDS -->
+<div class="container">
+  <div class="section-title">📚 ເລືອກຫົວຂໍ້ທີ່ຕ້ອງການອ່ານ</div>
+  <div class="cards-grid" id="cardsGrid"></div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-header" id="modalHeader">
+      <div class="modal-header-icon" id="modalIcon"></div>
+      <h2 id="modalTitle"></h2>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-footer" id="modalFooter">
+      <div class="nav-buttons">
+        <button class="btn-nav" id="btnPrev" onclick="navTopic(-1)">← ກ່ອນໜ້າ</button>
+        <button class="btn-nav" id="btnNext" onclick="navTopic(1)">ຕໍ່ໄປ →</button>
+      </div>
+      <button class="btn-read" id="btnRead" onclick="markRead()">✓ ອ່ານແລ້ວ</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const topics = [
+  {
+    id: 0,
+    icon: '⏰',
+    title: 'ການຂາດວຽກ ແລະ ລະເລີຍໜ້າທີ່',
+    subtitle: '7 ຂໍ້ກົດລະບຽບ',
+    color: '#FF6B35',
+    colorLight: '#FFF0E8',
+    rules: [
+      'ຂາດວຽກບໍ່ມີເຫດຜົນ <strong>1 ຄັ້ງ/ເດືອນ</strong> — ຖືກຕັດເງິນເດືອນຕາມມື້ຂາດ\nຂາດວຽກບໍ່ມີເຫດຜົນ <strong>3 ຄັ້ງ/ເດືອນ</strong> — ຖືກໃບເຕືອນ',
+      'ລາພັກບໍ່ສະບາຍ ແຕ່ຮູ້ພາຍຫຼັງວ່າ<strong>ມີເຈດຕະນາຕົວະ</strong> — ຕັດເງິນເດືອນ ແລະ ໃບເຕືອນ',
+      'ຫ້າມນຳ <strong>ຂອງສິ່ງມຶນເມົາ, ການພະນັນ</strong> ເຂົ້າມາໃນບ່ອນເຮັດວຽກ ຫຼື ສະຖານທີ່ລູກຄ້າ',
+      '<strong>ເວົ້າຈາບໍ່ສຸພາບ</strong>ຕໍ່ລູກຄ້າ — ຖືກໃບເຕືອນ',
+      '<strong>ລະເລີຍຕໍ່ໜ້າທີ່</strong> (ຫຼິ້ນໂທລະສັບ, ໄປລັກລີ້ນອນ, ອອກໄປບ່ອນອື່ນ ໃນໂມງເວລາເຮັດວຽກ) — ຖືກໃບເຕືອນ',
+      '<strong>ນຸ່ງຖືບໍ່ເປັນລະບຽບ</strong> — ຕັດເງິນ 20,000 ກີບ/ຄັ້ງ, ກາຍ 5 ຄັ້ງ ຖືກໃບເຕືອນ',
+      'ພະນັກງານຊາຍ<strong>ຈົ່ງຜົມຍາວ</strong>, ພະນັກງານຍິງ<strong>ມັດຜົມບໍ່ຮຽບຮ້ອຍ</strong> — ຕັກເຕືອນ 3 ຄັ້ງ ແລ້ວບໍ່ປະຕິບັດ ໃຫ້ໃບເຕືອນ'
+    ],
+    warning: 'ເງື່ອນໄຂໃບເຕືອນ: ຄັ້ງ 1 = ສຶກສາອົບຮົມ | ຄັ້ງ 2 = ໃບເຕືອນ + ຕັດເງິນ (ຫ້ອງການ 100K / ພາກສະໜາມ 50K) | ຄັ້ງ 3 = ໃບເຕືອນ + ຕັດເງິນ (200K / 100K) | ຄັ້ງ 4 = ຕັດເງິນ (300K / 150K) + ຍົກເລີກສັນຍາຈ້າງ'
+  },
+  {
+    id: 1,
+    icon: '🚫',
+    title: 'ຂໍ້ຫ້າມທົ່ວໄປຂອງບໍລິສັດ',
+    subtitle: '14 ຂໍ້ກົດລະບຽບ',
+    color: '#E74C3C',
+    colorLight: '#FDEDEC',
+    rules: [
+      'ຫ້າມ<strong>ຊັບຊ້ອນໜ້າທີ່ຕຳແໜ່ງ</strong>ຂອງຕົນ ຫຼື ຜູ້ອື່ນ',
+      'ຫ້າມ<strong>ອອກຈາກສະຖານທີ່ເຮັດວຽກ</strong>ໂດຍບໍ່ແຈ້ງຜູ້ຮັບຜິດຊອບ',
+      'ຫ້າມ<strong>ແຈກຢາຍເອກກະສານ</strong>ໂຄສະນາ, ສື່ລາມົກ, ຂ່າວສານຕໍ່ວ່າບໍລິສັດ ໂດຍບໍ່ໄດ້ຮັບອະນຸຍາດ',
+      'ຫ້າມ<strong>ນຳຄົນພາຍນອກ</strong>ເຂົ້າມາໃນບໍລິສັດ ໂດຍບໍ່ໄດ້ຮັບອະນຸຍາດ',
+      'ຫ້າມ<strong>ເຮັດວຽກສ່ວນຕົວ</strong>ໃນສະຖານທີ່ເຮັດວຽກ',
+      'ຫ້າມ<strong>ໃຊ້ສຽງດັງເກີນຂອບເຂດ</strong>ໃນບໍລິສັດ ແລະ ສະຖານທີ່ລູກຄ້າ',
+      'ຫ້າມ<strong>ທໍາລາຍ, ລັກເຄື່ອງຂອງ</strong>ທີ່ເປັນຊັບສົມບັດບໍລິສັດ ຫຼື ລູກຄ້າ',
+      'ຫ້າມ<strong>ຊຸມແຊວ, ດື່ມເຫຼົ້າ, ສູບຢາ, ຫຼິ້ນການພະນັນ</strong>ໃນສະຖານທີ່ເຮັດວຽກ',
+      'ຫ້າມ<strong>ວາງເຄື່ອງສ່ວນຕົວ</strong>ຊະຊາຍໃນສະຖານທີ່ເຮັດວຽກ — ຕ້ອງມ້ຽນໃຫ້ເປັນລະບຽບ',
+      'ຫ້າມ<strong>ນຳເອົາອາວຸດ</strong> (ປືນ, ດາບ, ມີດແຫລມ ແລະ ອື່ນໆ) ເຂົ້າມາໃນບໍລິສັດ — ມີໂທດຕາມກົດໝາຍອາຍາ',
+      'ຫ້າມ<strong>ເອົາຂອງຄົນອື່ນ</strong>ມາເປັນຂອງຕົນ ຫຼື ລັກເລັກຂະໂມຍນ້ອຍ — ຖືກອອກວຽກ + ຄະດີ',
+      'ຫ້າມ<strong>ນຳໃຊ້ຕຳແໜ່ງ</strong>ສ້າງອິດທິພົນ, ແບ່ງກຸ່ມແບ່ງພັກພວກ',
+      'ຫ້າມ<strong>ໂຕ້ຖຽງ, ໃຊ້ຄວາມຮຸນແຮງ</strong>ພາຍໃນບໍລິສັດ',
+      'ຫ້າມ<strong>ຂາຍ, ທໍາລາຍຂໍ້ມູນຄວາມລັບ</strong>ຂອງບໍລິສັດ'
+    ],
+    warning: null
+  },
+  {
+    id: 2,
+    icon: '💊',
+    title: 'ກົດໝາຍຢາເສບຕິດ',
+    subtitle: 'ໂທດຮ້າຍແຮງ',
+    color: '#7B68EE',
+    colorLight: '#F0EDFF',
+    rules: [
+      'ຄັ້ງທີ 1: ຕັກເຕືອນ, ສຶກສາອົບຮົມ, ຂຽນໃບເຕືອນ ພ້ອມ<strong>ຕັດເງິນ 100,000 ກີບ</strong>',
+      'ຄັ້ງທີ 2: ໃບເຕືອນ ພ້ອມ<strong>ຕັດເງິນ 200,000 ກີບ</strong> ແລະ <strong>ພັກວຽກຖາວອນ</strong>',
+      'ກໍລະນີຮ້າຍແຮງ / ຖືກຕຳຫຼວດຈັບ: ດຳເນີນ<strong>ຄະດີຕາມກົດໝາຍ</strong>, ບໍລິສັດຈະບໍ່ໃຫ້ເງິນເດືອນ ຫຼື ຄ່າຕອບແທນ ແລະ ໂຈະການເຮັດວຽກທັນທີ'
+    ],
+    warning: 'ຜູ້ໃດທີ່ມີພຶດຕິກໍາໃນການເສບ, ຂາຍ ແລະ ຜະລິດຢາເສບຕິດ ຈະຖືກດຳເນີນຄະດີຕາມກົດໝາຍ — ເປັນໂທດຮ້າຍແຮງ!'
+  },
+  {
+    id: 3,
+    icon: '🕐',
+    title: 'ເວລາເຮັດວຽກ ແລະ ການມາວຽກຊ້າ',
+    subtitle: 'ຊົ່ວໂມງ ແລະ ລະບຽບ Check-in',
+    color: '#4ECDC4',
+    colorLight: '#E8FAF8',
+    rules: [
+      'ເຮັດວຽກ <strong>8 ຊົ່ວໂມງ/ມື້</strong> ແລະ <strong>6 ມື້/ອາທິດ</strong>',
+      'ເວລາເຮັດວຽກ: ຕາມຕາລາງທີ່ບໍລິສັດກຳນົດໃຫ້ແຕ່ລະຄົນ',
+      'ອະນຸຍາດ<strong>ມາຊ້າໄດ້ບໍ່ເກີນ 10 ນາທີ</strong>',
+      'ຊ້າ 10-30 ນາທີ = ນັບ <strong>1 ຄັ້ງ</strong> | ຊ້າ 60+ ນາທີ = ນັບ <strong>ເຄິ່ງມື້</strong>',
+      'ມາຊ້າ <strong>1-3 ຄັ້ງ/ເດືອນ</strong> — ຍັງອະນຸຍາດ',
+      'ມາຊ້າ <strong>ກາຍ 4 ຄັ້ງ/ເດືອນ</strong> — ຕັດເງິນ 20,000 ກີບ/ຄັ້ງ',
+      'ມາຊ້າ <strong>ກາຍ 10 ຄັ້ງ/ເດືອນ</strong> — ຕັດເງິນ + ໃບເຕືອນ'
+    ],
+    warning: 'ບໍລິສັດຄາດຫວັງໃຫ້ພະນັກງານມາຮອດສະຖານທີ່ເຮັດວຽກ ກ່ອນເວລາເລີ່ມເຮັດວຽກ!'
+  },
+  {
+    id: 4,
+    icon: '🚪',
+    title: 'ການອອກວຽກກ່ອນໂມງ',
+    subtitle: 'Leave Before Time',
+    color: '#FF85A1',
+    colorLight: '#FFF0F3',
+    rules: [
+      'ອອກວຽກກ່ອນເວລາ ຫຼື ບໍ່ແຈ້ງອອກ — ຕັດເງິນ <strong>20,000 ກີບ/ຄັ້ງ</strong>',
+      'ອອກກ່ອນໂມງ <strong>5 ຄັ້ງ/ເດືອນ</strong> — ຕັດເງິນ + ໃບເຕືອນ'
+    ],
+    warning: 'ເງື່ອນໄຂໃບເຕືອນ: ຄັ້ງ 1 = ສຶກສາອົບຮົມ | ຄັ້ງ 2 = ໃບເຕືອນ + ຕັດເງິນ (100K / 50K) | ຄັ້ງ 3 = (200K / 100K) | ຄັ້ງ 4 = (300K / 150K) + ຍົກເລີກສັນຍາ'
+  },
+  {
+    id: 5,
+    icon: '🏖️',
+    title: 'ການລາພັກປະຈຳປີ',
+    subtitle: 'ອີງຕາມມາດຕາ 57',
+    color: '#45B7D1',
+    colorLight: '#E8F6FA',
+    rules: [
+      'ໄດ້ຮັບສິດພັກ <strong>15 ມື້/ປີ</strong> (ຫຼັງເຮັດວຽກຄົບ 1 ປີ)',
+      'ຕ້ອງ<strong>ຍື່ນຂໍລາພັກ</strong>ເປັນລາຍລັກອັກສອນ ຜ່ານການເຫັນດີຈາກຫົວໜ້າພະແນກ',
+      'ແຈ້ງ<strong>ລ່ວງໜ້າ 7 ມື້</strong>ກ່ອນມື້ລາພັກ',
+      'ບໍ່ສາມາດລາພັກ<strong>ຕໍ່ເນື່ອງເກີນ 6 ມື້</strong>'
+    ],
+    warning: null
+  },
+  {
+    id: 6,
+    icon: '🏥',
+    title: 'ການລາປ່ວຍ ແລະ ລາພັກອື່ນໆ',
+    subtitle: 'ປ່ວຍ, ແຕ່ງງານ, ເກີດລູກ, ງານສົບ',
+    color: '#96CEB4',
+    colorLight: '#EFF8F3',
+    rules: [
+      '<strong>ລາປ່ວຍ:</strong> ໄດ້ບໍ່ເກີນ 30 ວັນ/ປີ (ຮັບເງິນເດືອນເຕັມ) — ລາ 1 ມື້ ບໍ່ຕ້ອງມີໃບແພດ, ກາຍ 1 ມື້ ຕ້ອງມີໃບຢັ້ງຢືນ',
+      '<strong>ສຳຄັນ:</strong> ແຈ້ງຫົວໜ້າ + ຝ່າຍບຸກຄົນ 1 ຊມ ກ່ອນໂມງເຮັດວຽກ — ບໍ່ສາມາດລາຜ່ານ WhatsApp',
+      '<strong>ລາແຕ່ງງານ:</strong> ພັກໄດ້ 3 ມື້ (ຕ້ອງຍື່ນບັດເຊີນ)',
+      '<strong>ລາເກີດລູກ:</strong> ຜູ້ຍິງ (ເຮັດວຽກ 1 ປີ+) ພັກ 105 ວັນ, ຝາແຝດ 120 ວັນ — ແຈ້ງລ່ວງໜ້າ 30 ມື້, ຮັບເງິນ 3 ເດືອນ + ປະກັນສັງຄົມ',
+      '<strong>ຫຼັງເກີດລູກ:</strong> ພັກວັນເສົາ ຈົນກວ່າລູກ 1 ປີ (ບໍ່ໄດ້ສິດລາ 15 ວັນ)',
+      '<strong>ລາງານສົບ:</strong> ພັກ 3 ມື້ (ສຳລັບ ພໍ່, ແມ່, ອ້າຍ, ເອື້ອຍ, ນ້ອງ ເທົ່ານັ້ນ)'
+    ],
+    warning: 'ຖ້າລາປ່ວຍບໍ່ປະຕິບັດຕາມກົດ: ຈະຕັດມື້ພັກປະຈຳປີແທນ → ຖ້າໝົດ ຈະຖືວ່າຂາດວຽກ + ຕັດເງິນ'
+  },
+  {
+    id: 7,
+    icon: '🎌',
+    title: 'ວັນພັກທາງລັດຖະການ',
+    subtitle: 'ວັນພັກປະຈຳປີ',
+    color: '#DDA0DD',
+    colorLight: '#F9F0F9',
+    rules: [
+      '🎆 <strong>1 ມັງກອນ</strong> — ວັນບຸນປີໃໝ່ສາກົນ (ພັກ 1 ວັນ)',
+      '👩 <strong>8 ມີນາ</strong> — ວັນແມ່ຍິງສາກົນ (ພັກ 1 ວັນ, ສຳລັບເພດຍິງ)',
+      '💧 <strong>ບຸນປີໃໝ່ລາວ</strong> (ພັກ 3 ວັນ)',
+      '⚒️ <strong>1 ພຶດສະພາ</strong> — ວັນກຳມະກອນສາກົນ (ພັກ 1 ວັນ)',
+      '👩‍👧 <strong>20 ກໍລະກົດ</strong> — ວັນສ້າງຕັ້ງສະຫະພັນແມ່ຍິງລາວ (ພັກ 1 ວັນ, ສຳລັບເພດຍິງ)',
+      '🇱🇦 <strong>2 ທັນວາ</strong> — ວັນຊາດ (ພັກ 1 ວັນ)',
+      '🌍 ພະນັກງານຕ່າງປະເທດ: ພັກ 1 ວັນ ສຳລັບວັນຊາດຂອງຕົນ',
+      '📌 ຖ້າວັນພັກກົງກັບວັນພັກປະຈຳອາທິດ — <strong>ໄດ້ພັກທົດແທນ</strong>'
+    ],
+    warning: null
+  }
+];
+
+let readTopics = new Set();
+let currentTopicId = null;
+
+function renderCards() {
+  const grid = document.getElementById('cardsGrid');
+  grid.innerHTML = topics.map(t => `
+    <div class="card" onclick="openModal(${t.id})" id="card-${t.id}">
+      <div class="card-status ${readTopics.has(t.id) ? 'read' : ''}" id="status-${t.id}">
+        ${readTopics.has(t.id) ? '✓' : ''}
+      </div>
+      <div class="card-header">
+        <div class="card-icon-wrap" style="background:${t.colorLight}">
+          ${t.icon}
+        </div>
+        <div class="card-title">${t.title}</div>
+        <div class="card-subtitle">${t.subtitle}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function openModal(id) {
+  const t = topics[id];
+  currentTopicId = id;
+  document.getElementById('modalIcon').style.background = t.colorLight;
+  document.getElementById('modalIcon').textContent = t.icon;
+  document.getElementById('modalTitle').textContent = t.title;
+
+  let html = t.rules.map((r, i) => `
+    <div class="rule-item" style="animation-delay: ${i * 0.05}s">
+      <div class="rule-num" style="background:${t.color}">${i + 1}</div>
+      <div class="rule-text">${r}</div>
+    </div>
+  `).join('');
+
+  if (t.warning) {
+    html += `
+      <div class="warning-box">
+        <span class="icon">⚠️</span>
+        <span class="text">${t.warning}</span>
+      </div>
+    `;
+  }
+
+  document.getElementById('modalBody').innerHTML = html;
+  document.getElementById('btnRead').style.background = t.color;
+  document.getElementById('btnRead').textContent = readTopics.has(id) ? '✓ ອ່ານແລ້ວ' : '✓ ໝາຍວ່າອ່ານແລ້ວ';
+
+  document.getElementById('btnPrev').style.display = id > 0 ? 'inline-block' : 'none';
+  document.getElementById('btnNext').style.display = id < topics.length - 1 ? 'inline-block' : 'none';
+
+  document.getElementById('modalOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+  currentTopicId = null;
+}
+
+function navTopic(dir) {
+  const newId = currentTopicId + dir;
+  if (newId >= 0 && newId < topics.length) {
+    openModal(newId);
+  }
+}
+
+function markRead() {
+  if (currentTopicId === null) return;
+  readTopics.add(currentTopicId);
+  updateProgress();
+  renderCards();
+  document.getElementById('btnRead').textContent = '✓ ອ່ານແລ້ວ';
+
+  if (currentTopicId < topics.length - 1) {
+    setTimeout(() => navTopic(1), 400);
+  } else {
+    closeModal();
+  }
+}
+
+function updateProgress() {
+  const count = readTopics.size;
+  const total = topics.length;
+  const pct = Math.round((count / total) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressCount').textContent = count + '/' + total;
+  document.getElementById('readCountStat').textContent = count;
+
+  if (count === 0) {
+    document.getElementById('progressText').textContent = 'ເລີ່ມອ່ານກົດລະບຽບ — ກົດເລືອກຫົວຂໍ້ຂ້າງລຸ່ມ';
+  } else if (count < total) {
+    document.getElementById('progressText').textContent = `ອ່ານໄປແລ້ວ ${count} ຫົວຂໍ້ — ສືບຕໍ່ອ່ານຕື່ມ!`;
+  } else {
+    document.getElementById('progressText').textContent = 'ຂອບໃຈ! ທ່ານອ່ານຄົບທຸກຫົວຂໍ້ແລ້ວ 🎉';
+    document.getElementById('completionBanner').classList.add('show');
+  }
+}
+
+// Close modal on overlay click
+document.getElementById('modalOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+// Close on Escape
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
+
+// Init
+renderCards();
+</script>
+</body>
+</html>
